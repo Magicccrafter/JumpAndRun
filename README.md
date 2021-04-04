@@ -9,11 +9,11 @@ This is a JumpAndRun Plugin based on the SpigotAPI. The Plugin creates a random 
 - Actionbar with the current Score
 - Admin command to set the jump and run spawn and test the jump and run
 - API
+- Highscore System
+- Commands: /jumpandrun, /highscore
 
 ## Work in progress Features
 
-- Highscore Ranking system
-- Highscore Hologram
 - Better API
 - Custom Jump And Run Block
 

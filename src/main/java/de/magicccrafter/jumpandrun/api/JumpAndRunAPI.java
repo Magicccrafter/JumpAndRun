@@ -1,6 +1,7 @@
 package de.magicccrafter.jumpandrun.api;
 
 import de.magicccrafter.jumpandrun.JumpAndRun;
+import de.magicccrafter.jumpandrun.utils.HighscoreData;
 import de.magicccrafter.jumpandrun.utils.PlayerJumpAndRun;
 import org.bukkit.entity.Player;
 
@@ -31,6 +32,12 @@ public class JumpAndRunAPI {
 
     public HashMap<UUID, PlayerJumpAndRun> getAllPlayerJumpAndRuns() {
         return JumpAndRun.getInstance().getJumpAndRunManager().getJumpAndRuns();
+    }
+
+    public HighscoreData getPlayersHighscoreData(UUID playeruuid) {
+        HighscoreData data = new HighscoreData();
+        data.setUUID(playeruuid);
+        return data;
     }
 
 }

@@ -45,7 +45,9 @@ public class PlayerJumpAndRun {
 
         this.player.teleport(new Location(this.currentLocation.getWorld(), this.currentLocation.getX(), this.currentLocation.getY() + 1, this.currentLocation.getZ()));
 
-        this.startActionbarScheduler();
+        if(JumpAndRun.getInstance().isActionbarShown()) {
+            this.startActionbarScheduler();
+        }
         this.createNextJumpAndRunBlock();
     }
 
@@ -81,7 +83,20 @@ public class PlayerJumpAndRun {
         this.player.playSound(this.player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 1, 1);
         this.removeBlock(this.currentLocation);
         this.removeBlock(this.nextLocation);
-        Bukkit.getScheduler().cancelTask(this.actionbarScheduler);
+        if(JumpAndRun.getInstance().isHighscoreSystemActivated()) {
+            HighscoreData data = JumpAndRun.getInstance().getJumpAndRunAPI().getPlayersHighscoreData(this.player.getUniqueId());
+            if(data.getHighscore() < this.points) {
+                data.setHighscore(this.points);
+                this.player.sendMessage("§7§kOOOOOOOOOOOOOOOOOOOOOOO");
+                this.player.sendMessage(" ");
+                this.player.sendMessage("§6Neuer Highscore§7: §4" + this.points + " Punkte");
+                this.player.sendMessage(" ");
+                this.player.sendMessage("§7§kOOOOOOOOOOOOOOOOOOOOOOO");
+            }
+        }
+        if(JumpAndRun.getInstance().isActionbarShown()) {
+            Bukkit.getScheduler().cancelTask(this.actionbarScheduler);
+        }
         this.player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(" "));
     }
 
@@ -89,7 +104,11 @@ public class PlayerJumpAndRun {
         this.actionbarScheduler = Bukkit.getScheduler().scheduleAsyncRepeatingTask(JumpAndRun.getInstance(), new Runnable() {
             @Override
             public void run() {
-                player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText("§aJumpAndRun §7| §cPunkte§7: §4" + points + " §7| §2" + player.getName()));
+                if(JumpAndRun.getInstance().isHighscoreSystemActivated()) {
+                    player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText("§aJumpAndRun §7| §cPunkte§7: §4" + points + " §7| §6Highscore§7: §4" + JumpAndRun.getInstance().getJumpAndRunAPI().getPlayersHighscoreData(player.getUniqueId()).getHighscore() + " §7| §2" + player.getName()));
+                } else {
+                    player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText("§aJumpAndRun §7| §cPunkte§7: §4" + points + " §7| §2" + player.getName()));
+                }
             }
         }, 0, 5);
     }
