@@ -1,8 +1,10 @@
 package de.magicccrafter.jumpandrun;
 
+import de.magicccrafter.jumpandrun.api.JumpAndRunAPI;
 import de.magicccrafter.jumpandrun.commands.JumpAndRunCommand;
 import de.magicccrafter.jumpandrun.listeners.BlockListener;
 import de.magicccrafter.jumpandrun.listeners.MoveListener;
+import de.magicccrafter.jumpandrun.listeners.QuitListener;
 import de.magicccrafter.jumpandrun.utils.JumpAndRunManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -13,6 +15,7 @@ public class JumpAndRun extends JavaPlugin {
     private static JumpAndRun instance;
     private String prefix;
     private JumpAndRunManager jumpAndRunManager;
+    private JumpAndRunAPI jumpAndRunAPI;
 
     @Override
     public void onEnable() {
@@ -23,6 +26,7 @@ public class JumpAndRun extends JavaPlugin {
         PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new MoveListener(), this);
         pluginManager.registerEvents(new BlockListener(), this);
+        pluginManager.registerEvents(new QuitListener(), this);
 
         getCommand("jumpandrun").setExecutor(new JumpAndRunCommand());
     }
@@ -47,5 +51,9 @@ public class JumpAndRun extends JavaPlugin {
 
     public JumpAndRunManager getJumpAndRunManager() {
         return jumpAndRunManager;
+    }
+
+    public JumpAndRunAPI getJumpAndRunAPI() {
+        return jumpAndRunAPI;
     }
 }

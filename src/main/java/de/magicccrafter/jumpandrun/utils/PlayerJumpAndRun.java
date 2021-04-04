@@ -85,7 +85,7 @@ public class PlayerJumpAndRun {
         this.player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(" "));
     }
 
-    public void startActionbarScheduler() {
+    private void startActionbarScheduler() {
         this.actionbarScheduler = Bukkit.getScheduler().scheduleAsyncRepeatingTask(JumpAndRun.getInstance(), new Runnable() {
             @Override
             public void run() {
@@ -94,11 +94,11 @@ public class PlayerJumpAndRun {
         }, 0, 5);
     }
 
-    public void createBlock(Location location, Material material) {
+    private void createBlock(Location location, Material material) {
         location.getBlock().setType(material);
     }
 
-    public void removeBlock(Location location) {
+    private void removeBlock(Location location) {
         location.getBlock().setType(Material.AIR);
     }
 
@@ -112,5 +112,9 @@ public class PlayerJumpAndRun {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public Integer getPoints() {
+        return points;
     }
 }
