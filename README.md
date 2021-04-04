@@ -22,7 +22,7 @@ This is a JumpAndRun Plugin based on the SpigotAPI. The Plugin creates a random 
 **Important!** The Listener in the example used, is from the Bukkit API and not from the JumpAndRunAPI
 
 **Example**
-´´´java
+```java
 import de.magicccrafter.jumpandrun.utils.PlayerJumpAndRun;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -72,4 +72,4 @@ public class APIExample implements Listener {
         }
     }
 }
-´´´
+```
