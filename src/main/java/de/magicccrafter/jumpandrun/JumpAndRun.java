@@ -31,6 +31,7 @@ public class JumpAndRun extends JavaPlugin {
         pluginManager.registerEvents(new MoveListener(), this);
         pluginManager.registerEvents(new BlockListener(), this);
         pluginManager.registerEvents(new QuitListener(), this);
+        pluginManager.registerEvents(new InteractListener(), this);
 
         getCommand("jumpandrun").setExecutor(new JumpAndRunCommand());
         getCommand("highscore").setExecutor(new HighscoreCommand());
