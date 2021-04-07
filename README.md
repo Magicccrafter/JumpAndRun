@@ -22,9 +22,9 @@ This is a JumpAndRun Plugin based on the SpigotAPI. The Plugin creates a random 
 3. If you want that the player right clicks on a button, or go to a pressure plate, you can use the setup stick (/jumpandrun setupstick). If you left click on someting, its set as the block, pressure plate or button. Every time you can reset this.
 
 ## Configuration
-`showActionbar: true`
+- `showActionbar: true`
 You can configure if the actionbar is shown
-`activateHighscoreSystem: true`
+- `activateHighscoreSystem: true`
 You can configure if the highscore system is active
 
 # API
