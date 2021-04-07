@@ -23,11 +23,6 @@ public class JumpAndRunCommand implements CommandExecutor {
                         JumpAndRun.getInstance().saveConfig();
                         player.sendMessage(JumpAndRun.getInstance().getPrefix() + "Du hast die Start Koordinaten gesetzt");
                         return true;
-                    } else if(strings[0].equalsIgnoreCase("settophologram")) {
-                        JumpAndRun.getInstance().getConfig().set("JumpAndRunTopHologram", player.getLocation());
-                        JumpAndRun.getInstance().saveConfig();
-                        player.sendMessage(JumpAndRun.getInstance().getPrefix() + "Du hast das Top Hologram gesetzt");
-                        return true;
                     } else if(strings[0].equalsIgnoreCase("list")) {
                         player.sendMessage(JumpAndRun.getInstance().getPrefix() + "§2Laufende Jump And Runs");
                         for(PlayerJumpAndRun playerJumpAndRun : JumpAndRun.getInstance().getJumpAndRunManager().getJumpAndRuns().values()) {
@@ -60,7 +55,6 @@ public class JumpAndRunCommand implements CommandExecutor {
     private void help(Player player) {
         player.sendMessage(JumpAndRun.getInstance().getPrefix() + "§2JumpAndRun Admin Hilfe");
         player.sendMessage(JumpAndRun.getInstance().getPrefix() + "§e/jumpandrun setstartlocation §7- §eSetzt die Start Koordinaten");
-        player.sendMessage(JumpAndRun.getInstance().getPrefix() + "§e/jumpandrun settophologram §7- §eSetzt das Top Hologram");
         player.sendMessage(JumpAndRun.getInstance().getPrefix() + "§e/jumpandrun list §7- §eListet alle aktiven JumpAndRuns auf");
         player.sendMessage(JumpAndRun.getInstance().getPrefix() + "§e/jumpandrun test §7- §eStartet ein Test Jump And Run");
         player.sendMessage(JumpAndRun.getInstance().getPrefix() + "§e/jumpandrun setupstick §7- §eGebe dir den SetupStick");
