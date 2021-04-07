@@ -2,8 +2,6 @@
  
 This is a JumpAndRun Plugin based on the SpigotAPI. The Plugin creates a random JumpAndRun for every player. For example, you can use it in a Minigame Lobby. Also you can set the JumpAndRun spawn with a Command.
 
-**Read!** This plugin is currently work in progress.
-
 ## Current Features
 
 - Actionbar with the current Score
